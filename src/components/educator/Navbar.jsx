@@ -28,7 +28,7 @@ const Navbar = () => {
 					<div className="hidden lg:block overflow-hidden w-64 ml-2">
 						<div className="animate-marquee whitespace-nowrap">
 							<span className="text-sm font-semibold text-gray-700 inline-block">
-								Turn Learning Into Skill 🚀 Turn Learning Into Skill 🚀
+								Turn Learning Into Skill 
 							</span>
 						</div>
 					</div>
