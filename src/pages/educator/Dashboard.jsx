@@ -30,10 +30,21 @@ const Dashboard = () => {
       if (data?.success) {
         setDashboardData(data.dashboardData);
       } else {
-        // Silent fail
+        // Set empty dashboard data instead of null
+        setDashboardData({
+          totalCourses: 0,
+          totalEarnings: 0,
+          enrolledStudentsData: []
+        });
       }
     } catch (error) {
-      // Silent fail for dashboard data
+      console.error("Dashboard error:", error);
+      // Set empty dashboard data on error
+      setDashboardData({
+        totalCourses: 0,
+        totalEarnings: 0,
+        enrolledStudentsData: []
+      });
     } finally {
       setLoading(false);
     }
@@ -42,8 +53,6 @@ const Dashboard = () => {
   useEffect(() => {
     if (isEducator) {
       fetchDashboardData();
-    } else {
-      setDashboardData(null);
     }
   }, [isEducator]);
 
@@ -55,10 +64,26 @@ const Dashboard = () => {
 		);
 	}
 
+	if (!isEducator) {
+		return (
+			<div className="p-8 bg-gray-50/30 min-h-screen flex items-center justify-center">
+				<div className="text-center">
+					<p className="text-gray-500 mb-4">You need educator access to view this dashboard.</p>
+					<button
+						onClick={() => window.location.href = '/become-educator'}
+						className="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-2 rounded-lg"
+					>
+						Become an Educator
+					</button>
+				</div>
+			</div>
+		);
+	}
+
 	if (!dashboardData) {
 		return (
 			<div className="p-8 bg-gray-50/30 min-h-screen flex items-center justify-center">
-				<div className="text-gray-500">No data available</div>
+				<div className="text-gray-500">Loading your dashboard data...</div>
 			</div>
 		);
 	}

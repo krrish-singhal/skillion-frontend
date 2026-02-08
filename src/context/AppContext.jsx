@@ -118,11 +118,7 @@ const fetchUserData = async () => {
 
     if (data?.success) {
       setUserData(data.user);
-
-      // Role should ideally come from backend
-      if (data.user?.role === "educator") {
-        setIsEducator(true);
-      }
+      // Note: educator role is determined from Clerk's publicMetadata, not backend
     } else {
       // Silent fail
     }
@@ -266,10 +262,15 @@ useEffect(() => {
 
  
   useEffect(() => {
-    if (user && user.publicMetadata.role === "educator") {
-      setIsEducator(true);
+    if (user) {
+      const role = user.publicMetadata?.role;
+      if (role === "educator") {
+        setIsEducator(true);
+      } else {
+        setIsEducator(false);
+      }
     }
-  }, [user]);
+  }, [user, user?.publicMetadata?.role]);
 
   const value = {
     currency,

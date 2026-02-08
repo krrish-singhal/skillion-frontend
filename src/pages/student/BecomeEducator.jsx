@@ -8,7 +8,7 @@ import Footer from '../../components/student/Footer';
 
 const BecomeEducator = () => {
   const { getToken } = useAuth();
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
@@ -63,8 +63,10 @@ const BecomeEducator = () => {
   }, [user]);
 
   useEffect(() => {
-    checkExistingApplication();
-  }, []);
+    if (isLoaded) {
+      checkExistingApplication();
+    }
+  }, [isLoaded]);
 
   const checkExistingApplication = async () => {
     try {
@@ -224,8 +226,10 @@ const BecomeEducator = () => {
                 </div>
                 {existingApplication.status === 'approved' && (
                   <button
-                    onClick={() => navigate('/educator/dashboard')}
-                    className="mt-6 px-8 py-3 bg-linear-to-r  from-green-500 to-emerald-600 text-white rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition-all"
+                    onClick={() => {
+                      window.location.href = '/educator/dashboard';
+                    }}
+                    className="mt-6 px-8 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-all shadow-lg hover:shadow-xl"
                   >
                     Go to Educator Dashboard
                   </button>

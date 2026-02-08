@@ -69,6 +69,16 @@ const AdminEducatorApplications = () => {
 
       if (response.data.success) {
         toast.success(`Application ${newStatus} successfully!`);
+        
+        // Additional message for approved applications
+        if (newStatus === 'approved') {
+          setTimeout(() => {
+            toast.info('The applicant will need to refresh their browser or log out and back in to see educator features.', {
+              autoClose: 8000
+            });
+          }, 1000);
+        }
+        
         fetchApplications();
         setShowDetails(false);
         setSelectedApplication(null);

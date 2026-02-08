@@ -251,12 +251,12 @@ const enrollCourse = async () => {
 						<div className="mb-4">
 							<div className="flex items-baseline gap-3 flex-wrap">
 								<span className="text-4xl font-bold text-gray-900">
-								{currency}{courseData.coursePrice?.toFixed(2) || '9.99'}
+								{currency}{(courseData.coursePrice - (courseData.coursePrice * (courseData.discount || 0) / 100)).toFixed(2)}
 							</span>
 							{courseData.discount > 0 && (
 								<>
 									<span className="text-lg text-gray-500 line-through">
-										{currency}{(courseData.coursePrice / (1 - courseData.discount / 100)).toFixed(2)}
+										{currency}{courseData.coursePrice?.toFixed(2)}
 									</span>
 									<span className="text-yellow-600 font-semibold">
 										{courseData.discount}% off
