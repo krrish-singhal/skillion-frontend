@@ -56,7 +56,7 @@ export const AppContextProvider = (props) => {
       if (user) {
         try {
           const token = await getToken();
-          console.log(token);
+         
         } catch (error) {
           console.error("Error fetching token:", error);
         }

@@ -16,9 +16,11 @@ const MyEnrollMents = () => {
 	const [certificates, setCertificates] = useState({});
 
 	useEffect(() => {
-		fetchUserEnrolledCourses();
-		fetchCertificates();
-	}, []);
+		if (userData) {
+			fetchUserEnrolledCourses();
+			fetchCertificates();
+		}
+	}, [userData]);
 
 	const fetchCertificates = async () => {
 		try {
@@ -75,12 +77,6 @@ const MyEnrollMents = () => {
 };
 
 
-
-useEffect(() => {
-  if (userData) {
-    fetchUserEnrolledCourses();
-  }
-}, [userData]);
 
 useEffect(() => {
   if (enrolledCourses.length > 0) {

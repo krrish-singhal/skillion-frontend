@@ -3587,6 +3587,7 @@ const generateCourseContent = (courseId) => {
       lectureTitle: topic,
       lectureDuration: 10 + Math.floor(Math.random() * 20), // 10-30 minutes
       videoId: getVideoIdForLecture(topicKey, index, lectureIndex),
+      isPreviewFree: lectureIndex === 0, // First lecture of each chapter is free
     }));
 
     return {
