@@ -225,14 +225,14 @@ const BecomeEducator = () => {
                 {existingApplication.status === 'approved' && (
                   <button
                     onClick={() => navigate('/educator/dashboard')}
-                    className="mt-6 px-8 py-3 bg-linear-to-r from-green-500 to-emerald-600 text-white rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition-all"
+                    className="mt-6 px-8 py-3 bg-linear-to-r  from-green-500 to-emerald-600 text-white rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition-all"
                   >
                     Go to Educator Dashboard
                   </button>
                 )}
                 <button
                   onClick={() => navigate('/')}
-                  className="mt-4 px-8 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-all"
+                  className="mt-4 px-8 py-3 ml-8 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-all"
                 >
                   Back to Home
                 </button>

@@ -195,7 +195,7 @@ const SkillTrackerForm = () => {
         }
       `}</style>
       {showSuccess && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 animate-fadeIn">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/30 backdrop-blur-md animate-fadeIn">
           <div className="bg-white rounded-2xl p-8 shadow-2xl text-center max-w-md animate-scaleIn">
             <div className="text-6xl mb-4 animate-bounce">🚀</div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Skill Tracker Created!</h2>
